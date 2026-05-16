@@ -7,6 +7,8 @@ public class MetalDoor : MonoBehaviour
     [SerializeField] bool canOpen;
     [SerializeField] GameObject thePlayer;
     [SerializeField] GameObject theCam;
+    [SerializeField] GameObject textOnScreen;
+    [SerializeField] AudioSource lockedDoor;
 
     void Update()
     {
@@ -47,7 +49,10 @@ public class MetalDoor : MonoBehaviour
     {
         theCam.SetActive(true);
         thePlayer.SetActive(false);
+        textOnScreen.SetActive(true);
+        lockedDoor.Play();
         yield return new WaitForSeconds(3);
+        textOnScreen.SetActive(false);
         thePlayer.SetActive(true);
         theCam.SetActive(false);
     }
