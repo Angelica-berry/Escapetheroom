@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour
             commandBox.SetActive(true);
             interactcross.SetActive(true);
             actionBox.GetComponent<TMPro.TMP_Text>().text = actionText;
-            commandBox.GetComponent<TMPro.TMP_Text>().text =" [E] "+ commandText; 
+            commandBox.GetComponent<TMPro.TMP_Text>().text = " [E] " + commandText; 
 
         }
         else
