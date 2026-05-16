@@ -62,3 +62,4 @@ public class WebBurn : MonoBehaviour
         webCam.SetActive(false);
     }
 }
+

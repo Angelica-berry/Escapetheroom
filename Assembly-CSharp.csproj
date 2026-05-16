@@ -48,10 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\scripts\MetalDoor.cs" />
+    <Compile Include="Assets\scripts\CandlePickup.cs" />
     <Compile Include="Assets\scripts\PlayerCasting.cs" />
     <Compile Include="Assets\scripts\UIController.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\scripts\WebBurn.cs" />
+    <Compile Include="Assets\scripts\OpenDoor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
