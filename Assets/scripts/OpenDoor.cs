@@ -48,7 +48,7 @@ public class OpenDoor : MonoBehaviour
     IEnumerator OpeningDoor()
     {
         creakDoor.Play();
-        theDoor.GetComponent<Animator>().Play("MetalDoorOpen");
+        theDoor.GetComponent<Animator>().Play("Opendoor");
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(2);
     }
