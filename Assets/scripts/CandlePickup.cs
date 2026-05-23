@@ -8,7 +8,7 @@ public class CandlePickup : MonoBehaviour
     [SerializeField] GameObject textOnScreen;
     [SerializeField] GameObject tableCandle;
     [SerializeField] GameObject handCandle;
-    [SerializeField] GameObject webEvent;
+
 
     void Update()
     {
@@ -19,7 +19,7 @@ public class CandlePickup : MonoBehaviour
                 this.GetComponent<BoxCollider>().enabled = false;
                 tableCandle.SetActive(false);
                 handCandle.SetActive(true);
-                webEvent.SetActive(true);
+                
             }
         }
     }
