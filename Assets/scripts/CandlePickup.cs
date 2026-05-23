@@ -19,10 +19,19 @@ public class CandlePickup : MonoBehaviour
                 this.GetComponent<BoxCollider>().enabled = false;
                 tableCandle.SetActive(false);
                 handCandle.SetActive(true);
-                webEvent.SetActive(true);
+                
+                // Activate webEvent without pausing
+                if (webEvent != null)
+                {
+                    Time.timeScale = 1f;
+                    webEvent.SetActive(true);
+                }
+                
+                return;
             }
         }
     }
+
     void OnMouseOver()
     {
         if (PlayerCasting.distanceFromTarget < 5)
@@ -40,6 +49,7 @@ public class CandlePickup : MonoBehaviour
             UIController.uiActive = false;
         }
     }
+
     void OnMouseExit()
     {
         canPick = false;
