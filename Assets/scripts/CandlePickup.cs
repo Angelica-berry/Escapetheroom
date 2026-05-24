@@ -1,43 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CandlePickup : MonoBehaviour
 {
-    [SerializeField] bool canPick;
+    [SerializeField] bool canPick = false;
     [SerializeField] GameObject textOnScreen;
     [SerializeField] GameObject tableCandle;
     [SerializeField] GameObject handCandle;
 
-
-    void Update()
+    private void Update()
     {
-        if (canPick == true)
+        if (canPick && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                this.GetComponent<BoxCollider>().enabled = false;
-                tableCandle.SetActive(false);
-                handCandle.SetActive(true);
-                
-<<<<<<< HEAD
-=======
-                // Activate webEvent without pausing
-                if (webEvent != null)
-                {
-                    Time.timeScale = 1f;
-                    webEvent.SetActive(true);
-                }
-                
-                return;
->>>>>>> 4f70f3897f3d3d9742e6c7234a85e0f6cc887f62
-            }
+            PickupCandle();
         }
     }
 
-    void OnMouseOver()
+    private void PickupCandle()
     {
-        if (PlayerCasting.distanceFromTarget < 5)
+        // Disable collider so it can't be picked up again
+        BoxCollider col = GetComponent<BoxCollider>();
+        if (col != null)
+            col.enabled = false;
+
+        // Hide candle on table
+        if (tableCandle != null)
+            tableCandle.SetActive(false);
+
+        // Show candle in hand
+        if (handCandle != null)
+            handCandle.SetActive(true);
+
+        // Optional: hide interaction text
+        if (textOnScreen != null)
+            textOnScreen.SetActive(false);
+
+        canPick = false;
+    }
+
+    // ========================
+    // Mouse-based interaction (for desktop testing)
+    // ========================
+    private void OnMouseOver()
+    {
+        if (PlayerCasting.distanceFromTarget < 5f)
         {
             canPick = true;
             UIController.actionText = "Candle";
@@ -47,15 +53,18 @@ public class CandlePickup : MonoBehaviour
         else
         {
             canPick = false;
-            UIController.actionText = "";
-            UIController.commandText = "";
-            UIController.uiActive = false;
+            ClearUI();
         }
     }
 
-    void OnMouseExit()
+    private void OnMouseExit()
     {
         canPick = false;
+        ClearUI();
+    }
+
+    private void ClearUI()
+    {
         UIController.actionText = "";
         UIController.commandText = "";
         UIController.uiActive = false;
